@@ -1,0 +1,69 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to find all indices of a given key
+vector<int> findAllIndices(int arr[], int size, int key)
+{
+    vector<int> indices;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == key)
+        {
+            indices.push_back(i);
+        }
+    }
+
+    return indices;
+}
+
+int main()
+{
+    // Test Case 1: Multiple occurrences
+    int arr1[] = {2, 5, 3, 5, 7, 5, 9};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int key1 = 5;
+
+    vector<int> result = findAllIndices(arr1, size1, key1);
+
+    cout << "Test Case 1 (Multiple occurrences): ";
+    if (result.empty())
+        cout << "Key not found";
+    else
+        for (int index : result)
+            cout << index << " ";
+    cout << endl;
+
+    // Test Case 2: Key not present
+    int arr2[] = {1, 2, 3, 4, 5};
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+    int key2 = 8;
+
+    result = findAllIndices(arr2, size2, key2);
+
+    cout << "Test Case 2 (Key not present): ";
+    if (result.empty())
+        cout << "Key not found";
+    else
+        for (int index : result)
+            cout << index << " ";
+    cout << endl;
+
+    // Test Case 3: Empty array
+    int arr3[] = {};
+    int size3 = 0;
+    int key3 = 5;
+
+    result = findAllIndices(arr3, size3, key3);
+
+    cout << "Test Case 3 (Empty array): ";
+    if (result.empty())
+        cout << "No elements in array / Key not found";
+    else
+        for (int index : result)
+            cout << index << " ";
+    cout << endl;
+
+    return 0;
+}
